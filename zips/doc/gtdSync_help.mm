@@ -1,5 +1,4 @@
-<map version="freeplane 1.3.0"><!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net --><node ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1425127001498" COLOR="#ffffff" BACKGROUND_COLOR="#ff9900"><icon BUILTIN="launch"/><richcontent TYPE="NODE">
-<html>
+<map version="freeplane 1.3.0"><!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net --><node ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1425127001498" COLOR="#ffffff" BACKGROUND_COLOR="#ff9900"><icon BUILTIN="launch"/><richcontent TYPE="NODE"><html>
   <head>
     
   </head>
@@ -12,8 +11,7 @@
     </p>
   </body>
 </html>
-</richcontent><font SIZE="12" BOLD="true"/><hook NAME="MapStyle">    <properties show_icon_for_attributes="true" show_note_icons="true"/><map_styles><stylenode LOCALIZED_TEXT="styles.root_node"><stylenode LOCALIZED_TEXT="styles.predefined" POSITION="right"><stylenode LOCALIZED_TEXT="default" MAX_WIDTH="600" COLOR="#000000" STYLE="as_parent"><font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/></stylenode><stylenode LOCALIZED_TEXT="defaultstyle.details"/><stylenode LOCALIZED_TEXT="defaultstyle.note"/><stylenode LOCALIZED_TEXT="defaultstyle.floating"><edge STYLE="hide_edge"/><cloud COLOR="#f0f0f0" SHAPE="ROUND_RECT"/></stylenode></stylenode><stylenode LOCALIZED_TEXT="styles.user-defined" POSITION="right"><stylenode LOCALIZED_TEXT="styles.topic" COLOR="#18898b" STYLE="fork"><font NAME="Liberation Sans" SIZE="10" BOLD="true"/></stylenode><stylenode LOCALIZED_TEXT="styles.subtopic" COLOR="#cc3300" STYLE="fork"><font NAME="Liberation Sans" SIZE="10" BOLD="true"/></stylenode><stylenode LOCALIZED_TEXT="styles.subsubtopic" COLOR="#669900"><font NAME="Liberation Sans" SIZE="10" BOLD="true"/></stylenode><stylenode LOCALIZED_TEXT="styles.important"><icon BUILTIN="yes"/></stylenode></stylenode><stylenode LOCALIZED_TEXT="styles.AutomaticLayout" POSITION="right"><stylenode LOCALIZED_TEXT="AutomaticLayout.level.root" COLOR="#000000"><font SIZE="18"/></stylenode><stylenode LOCALIZED_TEXT="AutomaticLayout.level,1" COLOR="#0033ff"><font SIZE="16"/></stylenode><stylenode LOCALIZED_TEXT="AutomaticLayout.level,2" COLOR="#00b439"><font SIZE="14"/></stylenode><stylenode LOCALIZED_TEXT="AutomaticLayout.level,3" COLOR="#990000"><font SIZE="12"/></stylenode><stylenode LOCALIZED_TEXT="AutomaticLayout.level,4" COLOR="#111111"><font SIZE="10"/></stylenode></stylenode></stylenode></map_styles></hook><hook NAME="AutomaticEdgeColor" COUNTER="11"/><edge WIDTH="2"/><node TEXT="How to read this mind map" POSITION="left" ID="ID_40192965" CREATED="1425122187781" MODIFIED="1425510679700"><edge COLOR="#00ff00"/><font SIZE="14"/></node><node TEXT="Move around with arrow keys or using the mouse" POSITION="left" ID="ID_1263239923" CREATED="1425509928037" MODIFIED="1425509961188"><edge COLOR="#00ffff"/></node><node TEXT="To unfold or fold child nodes, select and press &quot;Space&quot; or click on small circle" POSITION="left" ID="ID_1848028293" CREATED="1425510094012" MODIFIED="1425529117831"><edge COLOR="#7c0000"/><node TEXT="" ID="ID_1807881680" CREATED="1425510133883" MODIFIED="1425510133883"/></node><node TEXT="To view or hide a node&apos;s details, press Alt+F2 or click on the small triangle" POSITION="left" ID="ID_778976435" CREATED="1425510175338" MODIFIED="1425529143916"><edge COLOR="#00007c"/><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent><font SIZE="12" BOLD="true"/><hook NAME="MapStyle">    <properties show_icon_for_attributes="true" show_note_icons="true"/><map_styles><stylenode LOCALIZED_TEXT="styles.root_node"><stylenode LOCALIZED_TEXT="styles.predefined" POSITION="right"><stylenode LOCALIZED_TEXT="default" MAX_WIDTH="600" COLOR="#000000" STYLE="as_parent"><font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/></stylenode><stylenode LOCALIZED_TEXT="defaultstyle.details"/><stylenode LOCALIZED_TEXT="defaultstyle.note"/><stylenode LOCALIZED_TEXT="defaultstyle.floating"><edge STYLE="hide_edge"/><cloud COLOR="#f0f0f0" SHAPE="ROUND_RECT"/></stylenode></stylenode><stylenode LOCALIZED_TEXT="styles.user-defined" POSITION="right"><stylenode LOCALIZED_TEXT="styles.topic" COLOR="#18898b" STYLE="fork"><font NAME="Liberation Sans" SIZE="10" BOLD="true"/></stylenode><stylenode LOCALIZED_TEXT="styles.subtopic" COLOR="#cc3300" STYLE="fork"><font NAME="Liberation Sans" SIZE="10" BOLD="true"/></stylenode><stylenode LOCALIZED_TEXT="styles.subsubtopic" COLOR="#669900"><font NAME="Liberation Sans" SIZE="10" BOLD="true"/></stylenode><stylenode LOCALIZED_TEXT="styles.important"><icon BUILTIN="yes"/></stylenode></stylenode><stylenode LOCALIZED_TEXT="styles.AutomaticLayout" POSITION="right"><stylenode LOCALIZED_TEXT="AutomaticLayout.level.root" COLOR="#000000"><font SIZE="18"/></stylenode><stylenode LOCALIZED_TEXT="AutomaticLayout.level,1" COLOR="#0033ff"><font SIZE="16"/></stylenode><stylenode LOCALIZED_TEXT="AutomaticLayout.level,2" COLOR="#00b439"><font SIZE="14"/></stylenode><stylenode LOCALIZED_TEXT="AutomaticLayout.level,3" COLOR="#990000"><font SIZE="12"/></stylenode><stylenode LOCALIZED_TEXT="AutomaticLayout.level,4" COLOR="#111111"><font SIZE="10"/></stylenode></stylenode></stylenode></map_styles></hook><hook NAME="AutomaticEdgeColor" COUNTER="11"/><edge WIDTH="2"/><node TEXT="How to read this mind map" POSITION="left" ID="ID_40192965" CREATED="1425122187781" MODIFIED="1425510679700"><edge COLOR="#00ff00"/><font SIZE="14"/></node><node TEXT="Move around with arrow keys or using the mouse" POSITION="left" ID="ID_1263239923" CREATED="1425509928037" MODIFIED="1425509961188"><edge COLOR="#00ffff"/></node><node TEXT="To unfold or fold child nodes, select and press &quot;Space&quot; or click on small circle" POSITION="left" ID="ID_1848028293" CREATED="1425510094012" MODIFIED="1425529117831"><edge COLOR="#7c0000"/><node TEXT="" ID="ID_1807881680" CREATED="1425510133883" MODIFIED="1425510133883"/></node><node TEXT="To view or hide a node&apos;s details, press Alt+F2 or click on the small triangle" POSITION="left" ID="ID_778976435" CREATED="1425510175338" MODIFIED="1425529143916"><edge COLOR="#00007c"/><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -23,8 +21,7 @@
     </p>
   </body>
 </html>
-</richcontent></node><node TEXT="To follow a link, click on the red arrow" POSITION="left" ID="ID_761604157" CREATED="1425510271166" MODIFIED="1426338212445" LINK="https://sourceforge.net/projects/gtdsync/"><edge COLOR="#007c00"/></node><node TEXT="1. Check your Freeplane settings" POSITION="right" ID="ID_716827337" CREATED="1408225394938" MODIFIED="1425133694277"><icon BUILTIN="bee"/><edge COLOR="#0000ff"/><node TEXT="From the Freeplane menu choose: Tools &gt; Preferences... &gt; Plugins" ID="ID_1907959053" CREATED="1408225394938" MODIFIED="1426351949530"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="To follow a link, click on the red arrow" POSITION="left" ID="ID_761604157" CREATED="1425510271166" MODIFIED="1426338212445" LINK="https://sourceforge.net/projects/gtdsync/"><edge COLOR="#007c00"/></node><node TEXT="1. Check your Freeplane settings" POSITION="right" ID="ID_716827337" CREATED="1408225394938" MODIFIED="1425133694277"><icon BUILTIN="bee"/><edge COLOR="#0000ff"/><node TEXT="From the Freeplane menu choose: Tools &gt; Preferences... &gt; Plugins" ID="ID_1907959053" CREATED="1408225394938" MODIFIED="1426351949530"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -42,8 +39,7 @@
     </ol>
   </body>
 </html>
-</richcontent></node><node TEXT="Within Preferences choose Behaviour" ID="ID_605192172" CREATED="1408225394938" MODIFIED="1426351952842"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Within Preferences choose Behaviour" ID="ID_605192172" CREATED="1408225394938" MODIFIED="1426351952842"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -53,8 +49,7 @@
     </p>
   </body>
 </html>
-</richcontent></node><node TEXT="Press OK to confirm the settings and restart Freeplane" ID="ID_436328824" CREATED="1408225394938" MODIFIED="1425134159845"/><node TEXT="From the Freeplane menu choose: View &gt; Toolbars &gt; F-bar" ID="ID_1164441944" CREATED="1425159822577" MODIFIED="1426351963097"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Press OK to confirm the settings and restart Freeplane" ID="ID_436328824" CREATED="1408225394938" MODIFIED="1425134159845"/><node TEXT="From the Freeplane menu choose: View &gt; Toolbars &gt; F-bar" ID="ID_1164441944" CREATED="1425159822577" MODIFIED="1426351963097"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -71,8 +66,7 @@
     </p>
   </body>
 </html>
-</richcontent></node></node><node TEXT="2. Set up your GTD mind map" POSITION="right" ID="ID_681960812" CREATED="1426283619546" MODIFIED="1426283665198"><icon BUILTIN="mindmap"/><edge COLOR="#7c007c"/><node TEXT="Customise GTD Sync icons" ID="ID_1599354848" CREATED="1425122388547" MODIFIED="1426351971879"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node></node><node TEXT="2. Set up your GTD mind map" POSITION="right" ID="ID_681960812" CREATED="1426283619546" MODIFIED="1426283665198"><icon BUILTIN="mindmap"/><edge COLOR="#7c007c"/><node TEXT="Customise GTD Sync icons" ID="ID_1599354848" CREATED="1425122388547" MODIFIED="1426351971879"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -101,8 +95,7 @@
     </p>
   </body>
 </html>
-</richcontent><node TEXT="Settings" LOCALIZED_STYLE_REF="default" ID="ID_494938282" CREATED="1410610206166" MODIFIED="1410612587509"><node TEXT="Icon: Next action" LOCALIZED_STYLE_REF="default" ID="ID_1969805117" CREATED="1410610307488" MODIFIED="1410612602158"><icon BUILTIN="messagebox_warning"/></node><node TEXT="Icon: Project" LOCALIZED_STYLE_REF="default" ID="ID_51780865" CREATED="1410610339277" MODIFIED="1410612602165"><icon BUILTIN="flag-green"/></node><node TEXT="Icon: Today" LOCALIZED_STYLE_REF="default" ID="ID_1436635679" CREATED="1410610350106" MODIFIED="1410612602167"><icon BUILTIN="full-1"/></node><node TEXT="Icon: Done" ID="ID_777789349" CREATED="1425127346180" MODIFIED="1425127403457"><icon BUILTIN="checked"/></node></node></node><node TEXT="From the Freeplane menu choose: View &gt; Node attributes &gt; Hide all attributes" ID="ID_909120521" CREATED="1425215156705" MODIFIED="1426351976240"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent><node TEXT="Settings" LOCALIZED_STYLE_REF="default" ID="ID_494938282" CREATED="1410610206166" MODIFIED="1410612587509"><node TEXT="Icon: Next action" LOCALIZED_STYLE_REF="default" ID="ID_1969805117" CREATED="1410610307488" MODIFIED="1410612602158"><icon BUILTIN="messagebox_warning"/></node><node TEXT="Icon: Project" LOCALIZED_STYLE_REF="default" ID="ID_51780865" CREATED="1410610339277" MODIFIED="1410612602165"><icon BUILTIN="flag-green"/></node><node TEXT="Icon: Today" LOCALIZED_STYLE_REF="default" ID="ID_1436635679" CREATED="1410610350106" MODIFIED="1410612602167"><icon BUILTIN="full-1"/></node><node TEXT="Icon: Done" ID="ID_777789349" CREATED="1425127346180" MODIFIED="1425127403457"><icon BUILTIN="checked"/></node></node></node><node TEXT="From the Freeplane menu choose: View &gt; Node attributes &gt; Hide all attributes" ID="ID_909120521" CREATED="1425215156705" MODIFIED="1426351976240"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -122,8 +115,7 @@
   </body>
 </html>
 
-</richcontent></node></node><node TEXT="3. Enter projects and next actions" POSITION="right" ID="ID_162595634" CREATED="1425122620768" MODIFIED="1425126691119"><icon BUILTIN="edit"/><edge COLOR="#007c00"/><node TEXT="Enter the areas of your life (optional)" ID="ID_1281443359" CREATED="1425134839060" MODIFIED="1426352559200"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node></node><node TEXT="3. Enter projects and next actions" POSITION="right" ID="ID_162595634" CREATED="1425122620768" MODIFIED="1425126691119"><icon BUILTIN="edit"/><edge COLOR="#007c00"/><node TEXT="Enter the areas of your life (optional)" ID="ID_1281443359" CREATED="1425134839060" MODIFIED="1426352559200"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -146,8 +138,7 @@
     </p>
   </body>
 </html>
-</richcontent></node><node TEXT="Enter projects with F6" ID="ID_1680635439" CREATED="1425134909808" MODIFIED="1426352731800"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Enter projects with F6" ID="ID_1680635439" CREATED="1425134909808" MODIFIED="1426352731800"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -177,8 +168,7 @@
     </p>
   </body>
 </html>
-</richcontent></node><node TEXT="Enter next actions with F7" ID="ID_841749731" CREATED="1425134970741" MODIFIED="1426352926381"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Enter next actions with F7" ID="ID_841749731" CREATED="1425134970741" MODIFIED="1426352926381"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -208,8 +198,7 @@
     </p>
   </body>
 </html>
-</richcontent></node><node TEXT="Enter a context with Alt+F9" ID="ID_653408429" CREATED="1425135055503" MODIFIED="1426352932003"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Enter a context with Alt+F9" ID="ID_653408429" CREATED="1425135055503" MODIFIED="1426352932003"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -239,8 +228,7 @@
     </p>
   </body>
 </html>
-</richcontent></node><node TEXT="Delegate an action with Alt+F9" ID="ID_71525185" CREATED="1425135733504" MODIFIED="1426352934676"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Delegate an action with Alt+F9" ID="ID_71525185" CREATED="1425135733504" MODIFIED="1426352934676"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -270,8 +258,7 @@
   </body>
 </html>
 
-</richcontent></node><node TEXT="Complete a next action with F8" ID="ID_1361124772" CREATED="1425135403402" MODIFIED="1426352937112"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Complete a next action with F8" ID="ID_1361124772" CREATED="1425135403402" MODIFIED="1426352937112"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -295,8 +282,7 @@
   </body>
 </html>
 
-</richcontent></node><node TEXT="Rearrange your GTD mind map" ID="ID_1485910460" CREATED="1425135438891" MODIFIED="1426352942166"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Rearrange your GTD mind map" ID="ID_1485910460" CREATED="1425135438891" MODIFIED="1426352942166"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -312,8 +298,7 @@
     </p>
   </body>
 </html>
-</richcontent></node></node><node TEXT="4. Synchronise" POSITION="right" ID="ID_1991843613" CREATED="1425122691123" MODIFIED="1425126630141"><icon BUILTIN="down"/><icon BUILTIN="up"/><edge COLOR="#7c007c"/><node TEXT="Create a directory for todo.txt (only the first time)" ID="ID_1265459384" CREATED="1425135173600" MODIFIED="1426352960183"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node></node><node TEXT="4. Synchronise" POSITION="right" ID="ID_1991843613" CREATED="1425122691123" MODIFIED="1425126630141"><icon BUILTIN="down"/><icon BUILTIN="up"/><edge COLOR="#7c007c"/><node TEXT="Create a directory for todo.txt (only the first time)" ID="ID_1265459384" CREATED="1425135173600" MODIFIED="1426352960183"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -323,8 +308,7 @@
     </p>
   </body>
 </html>
-</richcontent></node><node TEXT="Start synchronisation with the F5 key" ID="ID_1688016481" CREATED="1425135256348" MODIFIED="1425313774511"/><node TEXT="Specify the directory for todo.txt (only the first time)" ID="ID_511708232" CREATED="1425269702547" MODIFIED="1426352962581"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Start synchronisation with the F5 key" ID="ID_1688016481" CREATED="1425135256348" MODIFIED="1425313774511"/><node TEXT="Specify the directory for todo.txt (only the first time)" ID="ID_511708232" CREATED="1425269702547" MODIFIED="1426352962581"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -341,8 +325,7 @@
     </p>
   </body>
 </html>
-</richcontent></node><node TEXT="Check the results" ID="ID_918766889" CREATED="1425135640235" MODIFIED="1426352965232"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Check the results" ID="ID_918766889" CREATED="1425135640235" MODIFIED="1426352965232"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -359,8 +342,7 @@
     </p>
   </body>
 </html>
-</richcontent></node></node><node TEXT="5. Check the settings of your todo.txt app" POSITION="right" ID="ID_79134124" CREATED="1426322195336" MODIFIED="1426322231082"><icon BUILTIN="executable"/><edge COLOR="#007c7c"/><node TEXT="Use the right todo.txt file" ID="ID_681576061" CREATED="1426322237173" MODIFIED="1426349824185"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node></node><node TEXT="5. Check the settings of your todo.txt app" POSITION="right" ID="ID_79134124" CREATED="1426322195336" MODIFIED="1426322231082"><icon BUILTIN="executable"/><edge COLOR="#007c7c"/><node TEXT="Use the right todo.txt file" ID="ID_681576061" CREATED="1426322237173" MODIFIED="1426349824185"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -377,8 +359,7 @@
   </body>
 </html>
 
-</richcontent></node><node TEXT="Turn off automatic archiving of completed actions" ID="ID_1534541158" CREATED="1425122961142" MODIFIED="1426349850431"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Turn off automatic archiving of completed actions" ID="ID_1534541158" CREATED="1425122961142" MODIFIED="1426349850431"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -394,8 +375,7 @@
     </p>
   </body>
 </html>
-</richcontent></node></node><node TEXT="6. Change your next actions in todo.txt" POSITION="right" ID="ID_1587957322" CREATED="1425122980819" MODIFIED="1425126575599"><icon BUILTIN="list"/><edge COLOR="#7c7c00"/><node TEXT="Filter context" ID="ID_982779292" CREATED="1425376702493" MODIFIED="1426350346850"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node></node><node TEXT="6. Change your next actions in todo.txt" POSITION="right" ID="ID_1587957322" CREATED="1425122980819" MODIFIED="1425126575599"><icon BUILTIN="list"/><edge COLOR="#7c7c00"/><node TEXT="Filter context" ID="ID_982779292" CREATED="1425376702493" MODIFIED="1426350346850"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -412,8 +392,7 @@
   </body>
 </html>
 
-</richcontent></node><node TEXT="Check off a next action" ID="ID_761514475" CREATED="1425140959269" MODIFIED="1426350367529"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Check off a next action" ID="ID_761514475" CREATED="1425140959269" MODIFIED="1426350367529"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -429,8 +408,7 @@
     </p>
   </body>
 </html>
-</richcontent></node><node TEXT="Add a next action" ID="ID_415481003" CREATED="1425140970794" MODIFIED="1426350376621"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Add a next action" ID="ID_415481003" CREATED="1425140970794" MODIFIED="1426350376621"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -446,8 +424,7 @@
     </p>
   </body>
 </html>
-</richcontent></node></node><node TEXT="7. Synchronise again" POSITION="right" ID="ID_1689988530" CREATED="1425123033815" MODIFIED="1425126638373"><icon BUILTIN="up"/><icon BUILTIN="down"/><edge COLOR="#ff0000"/><node TEXT="Start synchronisation with F5" ID="ID_1119340430" CREATED="1425145105222" MODIFIED="1426352980619"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node></node><node TEXT="7. Synchronise again" POSITION="right" ID="ID_1689988530" CREATED="1425123033815" MODIFIED="1425126638373"><icon BUILTIN="up"/><icon BUILTIN="down"/><edge COLOR="#ff0000"/><node TEXT="Start synchronisation with F5" ID="ID_1119340430" CREATED="1425145105222" MODIFIED="1426352980619"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -464,8 +441,7 @@
   </body>
 </html>
 
-</richcontent></node><node TEXT="Check changed actions" ID="ID_1368583689" CREATED="1425145268239" MODIFIED="1426353399129"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Check changed actions" ID="ID_1368583689" CREATED="1425145268239" MODIFIED="1426353399129"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>
@@ -481,8 +457,7 @@
     </p>
   </body>
 </html>
-</richcontent></node><node TEXT="Move new actions to the right place" ID="ID_1236444804" CREATED="1425145150218" MODIFIED="1426353396188"><richcontent TYPE="DETAILS" HIDDEN="true">
-<html>
+</richcontent></node><node TEXT="Move new actions to the right place" ID="ID_1236444804" CREATED="1425145150218" MODIFIED="1426353396188"><richcontent TYPE="DETAILS" HIDDEN="true"><html>
   <head>
     
   </head>

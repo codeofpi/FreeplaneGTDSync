@@ -9,3 +9,4 @@ bin/
 .mylyn/
 # Ignore archived files
 archive/
+index.html
