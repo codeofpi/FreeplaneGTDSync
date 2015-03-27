@@ -19,6 +19,7 @@ if (node.attributes.map) {
 	if (JOptionPane.showConfirmDialog(ui.frame,strQuestion,strTitle,JOptionPane.YES_NO_OPTION) ==
 		JOptionPane.YES_OPTION) {
 		node.attributes =[:]
+	}
 }
 // Remove current icons and add project icon to node
 s.ReplaceIcons(node, s.strIconProject)

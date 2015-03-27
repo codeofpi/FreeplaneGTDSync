@@ -1,6 +1,14 @@
-# V0.7: Beta release #
+# Installation #
 
-## Changes: ##
+<https://sourceforge.net/p/gtdsync/wiki/Installation/>
+
+# Quick start #
+
+Press Alt+F1 after installation.
+
+# Changes: #
+
+## V0.7: Beta release ##
 
 *  Added customisable icon for done.
 *  Added check whether current language matches language of GTD mind map to the 4 functions: GTD Sync, Project, Next action and Completed.
