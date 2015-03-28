@@ -1,7 +1,7 @@
 <map version="freeplane 1.3.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<attribute_registry SHOW_ATTRIBUTES="selected"/>
-<node TEXT="GTD Sync with todo.txt" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1427426236017" BACKGROUND_COLOR="#97c7dc" LINK="http://members.casema.nl/henk.vanden.akker/">
+<attribute_registry SHOW_ATTRIBUTES="hide"/>
+<node TEXT="GTD Sync with todo.txt" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1427518682414" BACKGROUND_COLOR="#97c7dc" LINK="http://members.casema.nl/henk.vanden.akker/">
 <font SIZE="16" BOLD="true" ITALIC="true"/>
 <hook NAME="MapStyle">
     <properties show_icon_for_attributes="true" show_note_icons="true"/>
@@ -96,6 +96,7 @@
     </ul>
   </body>
 </html>
+
 </richcontent>
 <node TEXT="description" POSITION="left" ID="ID_1383724249" CREATED="1390267005832" MODIFIED="1427066929477">
 <edge COLOR="#ff0000"/>
@@ -117,6 +118,7 @@
     </p>
   </body>
 </html>
+
 </richcontent>
 <node ID="ID_1854119050" CREATED="1390267912705" MODIFIED="1425833723044"><richcontent TYPE="NODE">
 
@@ -161,6 +163,7 @@
     </p>
   </body>
 </html>
+
 </richcontent>
 <node TEXT="v0.1" ID="ID_518764465" CREATED="1390782070654" MODIFIED="1390782087046">
 <node TEXT="Set up the foundation of the gtdSyncWithTodoTxt script: file handling, initialisation of important parameters, high level warning and information messages and translation to Dutch" ID="ID_365597270" CREATED="1390782089629" MODIFIED="1393621719199"/>
@@ -261,6 +264,7 @@
     </p>
   </body>
 </html>
+
 </richcontent>
 <node TEXT="&#xa;This add-on is free software: you can redistribute it and/or modify&#xa;it under the terms of the GNU General Public License as published by&#xa;the Free Software Foundation, either version 2 of the License, or&#xa;(at your option) any later version.&#xa;&#xa;This program is distributed in the hope that it will be useful,&#xa;but WITHOUT ANY WARRANTY; without even the implied warranty of&#xa;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.&#xa0;&#xa0;See the&#xa;GNU General Public License for more details.&#xa;" ID="ID_988929156" CREATED="1390267005880" MODIFIED="1408816191291"/>
 </node>
@@ -281,6 +285,7 @@
     </p>
   </body>
 </html>
+
 </richcontent>
 </node>
 <node TEXT="default.properties" POSITION="left" ID="ID_1177656479" CREATED="1390267005920" MODIFIED="1427066929648">
@@ -297,6 +302,7 @@
     </p>
   </body>
 </html>
+
 </richcontent>
 </node>
 <node TEXT="translations" POSITION="left" ID="ID_1198026371" CREATED="1390267005926" MODIFIED="1427066929651">
@@ -324,6 +330,7 @@
     </ul>
   </body>
 </html>
+
 </richcontent>
 <node TEXT="nl" ID="ID_1844388934" CREATED="1390711563350" MODIFIED="1427424192592">
 <attribute_layout NAME_WIDTH="242" VALUE_WIDTH="484"/>
@@ -645,6 +652,7 @@
     </p>
   </body>
 </html>
+
 </richcontent>
 <node TEXT="gtdSyncWithTodoTxt.groovy" ID="ID_740254855" CREATED="1390268738114" MODIFIED="1426400152109">
 <attribute_layout NAME_WIDTH="253" VALUE_WIDTH="253"/>
@@ -757,6 +765,7 @@
     </p>
   </body>
 </html>
+
 </richcontent>
 <node TEXT="doc" ID="ID_1507091255" CREATED="1408200850736" MODIFIED="1408200853222"/>
 <node TEXT="src" ID="ID_1991600969" CREATED="1391517472720" MODIFIED="1391517479140"/>
@@ -795,6 +804,7 @@
     </p>
   </body>
 </html>
+
 </richcontent>
 <node TEXT="${name}.png" ID="ID_675551843" CREATED="1391730079644" MODIFIED="1391730134225"/>
 <node TEXT="${name}-icon.png" ID="ID_1279890837" CREATED="1391730135796" MODIFIED="1391730145023"/>
@@ -837,6 +847,7 @@
     </p>
   </body>
 </html>
+
 </richcontent>
 <node TEXT="gtdSync.jar" ID="ID_1244414329" CREATED="1403402255610" MODIFIED="1403402255612"/>
 </node>
@@ -854,6 +865,7 @@
     </p>
   </body>
 </html>
+
 </richcontent>
 <attribute_layout NAME_WIDTH="38" VALUE_WIDTH="405"/>
 <attribute NAME="delete" VALUE="${installationbase}/addons/${name}.script.xml"/>

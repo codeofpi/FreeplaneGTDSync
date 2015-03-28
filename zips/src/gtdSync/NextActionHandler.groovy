@@ -2,6 +2,7 @@ package gtdSync
 
 import java.text.MessageFormat
 import java.text.SimpleDateFormat
+import org.freeplane.core.ui.components.UITools
 import org.freeplane.core.util.LogUtils
 import org.freeplane.core.util.TextUtils
 import org.freeplane.plugin.script.proxy.Proxy
@@ -613,7 +614,13 @@ class NextActionHandler {
 		}
 	
 		nodeCurrent.children.each {
-			nahsExport += findNextActions(it, nodesProjects, strIconNextAction, strIconToday)
+			try {
+				nahsExport += findNextActions(it, nodesProjects, strIconNextAction, strIconToday)
+			}
+			catch (e) {
+				UITools.errorMessage("Node '" + it.text + "' or one of its children caused a\
+ problem in the export.")
+			}
 		}
 		return nahsExport
 	}
