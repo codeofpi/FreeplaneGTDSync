@@ -37,6 +37,7 @@ class NextActionHandler {
 	static String strExceptionURL
 	static String strExceptionNoHistory
 	static String strExceptionURInotSupported
+	static String strExceptionExport
 	static String strNotImportedNotUpdatable
 	static String strNotUpdatableCreated
 	static String strNotUpdatableProject
@@ -136,6 +137,10 @@ class NextActionHandler {
 		strExceptionURInotSupported = TextUtils.getText("gtdSyncExceptionURInotSupported",
 			"This next action contains the link {0}. GTD Sync does not support and export this type\
  of link.")
+		strExceptionExport = TextUtils.getText("gtdSyncExceptionExport", "Node {0} caused an\
+ unexpected error in the export process. The export process should proceed as expected for the\
+ other nodes. Please submit a defect at https://sourceforge.net/p/gtdsync/tickets/new/.<br><br>\
+Error message:<br><br>")
 		strNotImportedNotUpdatable = TextUtils.getText("gtdSyncNotImportedNotUpdatable",
 			"NOT IMPORTED: It is not possible to update the mind map foor the following changes:")
 		strNotUpdatableCreated = TextUtils.getText("gtdSyncNotUpdatableCreated",
@@ -612,14 +617,17 @@ class NextActionHandler {
 					strMessage)
 			}
 		}
-	
-		nodeCurrent.children.each {
-			try {
-				nahsExport += findNextActions(it, nodesProjects, strIconNextAction, strIconToday)
-			}
-			catch (e) {
-				UITools.errorMessage("Node '" + it.text + "' or one of its children caused a\
- problem in the export.")
+		else {
+			nodeCurrent.children.each {
+				try {
+					nahsExport += findNextActions(it, nodesProjects, strIconNextAction, strIconToday)
+				}
+				catch (e) {
+					strMessage = "<html><body><div style='width: 500px'>" +
+						MessageFormat.format(strExceptionExport, Support.quote(it.text)) +
+						e.toString()
+					UITools.errorMessage(strMessage)
+				}
 			}
 		}
 		return nahsExport
