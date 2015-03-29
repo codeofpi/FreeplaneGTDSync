@@ -306,7 +306,9 @@ else {
 //  If path is not present, ask for it and store it in root node.
 //  It also means the GTD mind map has not been synced before
     if (jfcTodoTxtPath.showOpenDialog() == JFileChooser.APPROVE_OPTION) {
-        strTodoDirectory = jfcTodoTxtPath.selectedFile.toString() + "\\"
+// Replaced "\\" with File.separator to be compatible with Mac and Linux
+// see comment Steve in defect 13 (https://sourceforge.net/p/gtdsync/tickets/13/)
+        strTodoDirectory = jfcTodoTxtPath.selectedFile.toString() + File.separator
         nodeRoot['todoTxtPath'] = strTodoDirectory
 // The following string is now true and is included as information in the final message
         strFirstSync = strFirstSyncTrue
