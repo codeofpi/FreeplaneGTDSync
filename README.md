@@ -8,6 +8,10 @@ Press Alt+F1 after installation.
 
 # Changes: #
 
+## V0.7.2: Bug fixes and minor changes ##
+
+*  [Defect #12](https://sourceforge.net/p/gtdsync/tickets/12/): Some images do not show in Quick start mind map. Fixed by Evereasy. Thanks!
+
 ## V0.7.1: Bug fixes and minor changes ##
 
 *  [User story #1](https://sourceforge.net/p/gtdsync/tickets/1/): Option to remove node attributes in "Project" function
