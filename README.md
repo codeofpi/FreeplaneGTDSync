@@ -10,6 +10,7 @@ Press Alt+F1 after installation.
 
 ## V0.7.2: Bug fixes and minor changes ##
 
+*  [Defect #13](https://sourceforge.net/p/gtdsync/tickets/13/): GTD Sync not working in Linux and Mac. Thanks to Steve to point out the solution!
 *  [Defect #12](https://sourceforge.net/p/gtdsync/tickets/12/): Some images do not show in Quick start mind map. Fixed by Evereasy. Thanks!
 
 ## V0.7.1: Bug fixes and minor changes ##

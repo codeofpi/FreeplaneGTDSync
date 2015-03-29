@@ -199,7 +199,8 @@ String strMessageListStyle = "\"margin-top: 0 margin-bottom: 0\""
 def jfcTodoTxtPath = new JFileChooser(
     dialogTitle:strPathDialogueTitle,
     fileSelectionMode:JFileChooser.DIRECTORIES_ONLY,
-    currentDirectory:new java.io.File(System.getenv('USERPROFILE')),
+// Commented out because of defect 13 https://sourceforge.net/p/gtdsync/tickets/13/
+//    currentDirectory:new java.io.File(System.getenv('USERPROFILE')),
     approveButtonText:strPathSelect,
     approveButtonToolTipText:strPathSelectToolTip
 )

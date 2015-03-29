@@ -1,7 +1,7 @@
 <map version="freeplane 1.3.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
-<node TEXT="GTD Sync with todo.txt" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1427567611837" BACKGROUND_COLOR="#97c7dc" LINK="http://members.casema.nl/henk.vanden.akker/">
+<node TEXT="GTD Sync with todo.txt" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1427654417527" BACKGROUND_COLOR="#97c7dc" LINK="http://members.casema.nl/henk.vanden.akker/">
 <font SIZE="16" BOLD="true" ITALIC="true"/>
 <hook NAME="MapStyle">
     <properties show_icon_for_attributes="true" show_note_icons="true"/>
@@ -56,12 +56,13 @@
 <hook NAME="AutomaticEdgeColor" COUNTER="3"/>
 <attribute_layout NAME_WIDTH="121" VALUE_WIDTH="126"/>
 <attribute NAME="name" VALUE="gtdSyncWithTodoTxt"/>
-<attribute NAME="version" VALUE="v0.7.1"/>
+<attribute NAME="version" VALUE="v0.7.2"/>
 <attribute NAME="author" VALUE="Henk van den Akker"/>
 <attribute NAME="freeplaneVersionFrom" VALUE="1.3.11"/>
 <attribute NAME="freeplaneVersionTo" VALUE=""/>
 <attribute NAME="updateUrl" VALUE=""/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -95,11 +96,11 @@
     </ul>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="description" POSITION="left" ID="ID_1383724249" CREATED="1390267005832" MODIFIED="1427567423344">
 <edge COLOR="#ff0000"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -116,9 +117,9 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_1854119050" CREATED="1390267912705" MODIFIED="1425833723044"><richcontent TYPE="NODE">
+
 <html>
   <head>
     
@@ -149,6 +150,7 @@
 <node TEXT="changes" POSITION="left" ID="ID_1758370386" CREATED="1390267005867" MODIFIED="1427567423348">
 <edge COLOR="#0000ff"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -159,7 +161,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="v0.1" ID="ID_518764465" CREATED="1390782070654" MODIFIED="1390782087046">
 <node TEXT="Set up the foundation of the gtdSyncWithTodoTxt script: file handling, initialisation of important parameters, high level warning and information messages and translation to Dutch" ID="ID_365597270" CREATED="1390782089629" MODIFIED="1393621719199"/>
@@ -181,6 +182,7 @@
 </node>
 <node TEXT="v0.7" ID="ID_440586698" CREATED="1425727857630" MODIFIED="1425727882946">
 <node ID="ID_731831638" CREATED="1425730230217" MODIFIED="1426980632601"><richcontent TYPE="NODE">
+
 <html>
   <head>
     
@@ -219,6 +221,7 @@
 </node>
 <node TEXT="v0.7.1" ID="ID_247712498" CREATED="1427424334873" MODIFIED="1427424345694">
 <node ID="ID_381775610" CREATED="1427424425903" MODIFIED="1427424607213"><richcontent TYPE="NODE">
+
 <html>
   <head>
     
@@ -241,6 +244,7 @@
 <node TEXT="license" POSITION="left" ID="ID_1082168367" CREATED="1390267005873" MODIFIED="1427567423353">
 <edge COLOR="#00ff00"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -257,13 +261,13 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="&#xa;This add-on is free software: you can redistribute it and/or modify&#xa;it under the terms of the GNU General Public License as published by&#xa;the Free Software Foundation, either version 2 of the License, or&#xa;(at your option) any later version.&#xa;&#xa;This program is distributed in the hope that it will be useful,&#xa;but WITHOUT ANY WARRANTY; without even the implied warranty of&#xa;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.&#xa0;&#xa0;See the&#xa;GNU General Public License for more details.&#xa;" ID="ID_988929156" CREATED="1390267005880" MODIFIED="1408816191291"/>
 </node>
 <node TEXT="preferences.xml" POSITION="left" ID="ID_1100648944" CREATED="1390267005905" MODIFIED="1427567423595">
 <edge COLOR="#ff00ff"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -277,12 +281,12 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="default.properties" POSITION="left" ID="ID_1177656479" CREATED="1390267005920" MODIFIED="1427567423600">
 <edge COLOR="#00ffff"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -293,12 +297,12 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="translations" POSITION="left" ID="ID_1198026371" CREATED="1390267005926" MODIFIED="1427567423605">
 <edge COLOR="#ffff00"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -320,7 +324,6 @@
     </ul>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="nl" ID="ID_1844388934" CREATED="1390711563350" MODIFIED="1427580071757">
 <attribute_layout NAME_WIDTH="242" VALUE_WIDTH="484"/>
@@ -525,6 +528,7 @@
 <node TEXT="scripts" POSITION="right" ID="ID_1619523350" CREATED="1390267005954" MODIFIED="1427567423985">
 <edge COLOR="#00007c"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -643,7 +647,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="gtdSyncWithTodoTxt.groovy" ID="ID_740254855" CREATED="1390268738114" MODIFIED="1427567611833">
 <attribute_layout NAME_WIDTH="253" VALUE_WIDTH="253"/>
@@ -721,6 +724,7 @@
 <node TEXT="zips" POSITION="right" ID="ID_49501171" CREATED="1390267006047" MODIFIED="1427567428518">
 <edge COLOR="#007c00"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -755,7 +759,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="doc" ID="ID_1507091255" CREATED="1408200850736" MODIFIED="1408200853222"/>
 <node TEXT="src" ID="ID_1991600969" CREATED="1391517472720" MODIFIED="1391517479140"/>
@@ -763,6 +766,7 @@
 <node TEXT="images" POSITION="right" ID="ID_1763499668" CREATED="1390267006055" MODIFIED="1427567430648">
 <edge COLOR="#7c007c"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -793,7 +797,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="${name}.png" ID="ID_675551843" CREATED="1391730079644" MODIFIED="1391730134225"/>
 <node TEXT="${name}-icon.png" ID="ID_1279890837" CREATED="1391730135796" MODIFIED="1391730145023"/>
@@ -801,6 +804,7 @@
 <node TEXT="lib" POSITION="right" ID="ID_450907911" CREATED="1403402255595" MODIFIED="1427567428507">
 <edge COLOR="#7c7c00"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -835,13 +839,13 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="gtdSync.jar" ID="ID_1244414329" CREATED="1403402255610" MODIFIED="1403402255612"/>
 </node>
 <node TEXT="deinstall" LOCALIZED_STYLE_REF="default" POSITION="left" ID="ID_1502490928" CREATED="1403439367804" MODIFIED="1427567657726">
 <edge COLOR="#00ff00"/>
 <richcontent TYPE="NOTE">
+
 <html>
   <head>
     
@@ -852,7 +856,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <attribute_layout NAME_WIDTH="38" VALUE_WIDTH="405"/>
 <attribute NAME="delete" VALUE="${installationbase}/addons/${name}.script.xml"/>
