@@ -166,7 +166,9 @@ String strNoLog = textUtils.getText('gtdSyncResultNoLog',
 String strLogButtonText = textUtils.getText("gtdSyncResultLogButtonText",
 	"<HTML><CENTER>Consult the Freeplane logfile</CENTER></HTML>")
 // URI for Freeplane logfile
-URI uriFreeplaneLog = new File(logger.logDirectory + "\\log.0").toURI()
+// Replaced '//' with File.separator in order to resolve defect 15
+// https://sourceforge.net/p/gtdsync/tickets/15/
+URI uriFreeplaneLog = new File(logger.logDirectory + File.separator + "log.0").toURI()
 
 // Translations: Strings for path dialogue
 String strPathDialogueTitle = textUtils.getText('gtdSyncPathDialogueTitle',
