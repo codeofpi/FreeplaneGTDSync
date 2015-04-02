@@ -157,15 +157,16 @@ Error message:<br><br>")
 	NextActionHandler(String strTextLine) {
 		def lstDelimiters = []
 // Delimiters for parsing several attributes
-		lstDelimiters += [label:"where", start:"@", stop:" ", strip:1]
-		lstDelimiters += [label:"who", start:"[", stop:"]", strip:1]
-		lstDelimiters += [label:"threshold", start:"t:", stop:" ", strip:2]
-		lstDelimiters += [label:"when", start:"due:", stop:" ", strip:4]
-		lstDelimiters += [label:"project", start:"+", stop:" ", strip:1]
-		lstDelimiters += [label:"url", start:"http://", stop:" ", strip:0]
-		lstDelimiters += [label:"url", start:"https://", stop:" ", strip:0]
-		lstDelimiters += [label:"outlook", start:"outlook:", stop:" ", strip:0]
-		lstDelimiters += [label:"nodeID", start:"node:ID_", stop:" ", strip:5]
+		lstDelimiters += [label:"where", start:" @", stop:" ", strip:2]
+		lstDelimiters += [label:"who", start:" [", stop:"] ", strip:2]
+		lstDelimiters += [label:"threshold", start:" t:", stop:" ", strip:3]
+		lstDelimiters += [label:"when", start:" due:", stop:" ", strip:5]
+		lstDelimiters += [label:"project", start:" +", stop:" ", strip:2]
+		lstDelimiters += [label:"url", start:" http://", stop:" ", strip:1]
+		lstDelimiters += [label:"url", start:" https://", stop:" ", strip:1]
+		lstDelimiters += [label:"url", start:" mailto:", stop:" ", strip:1]
+		lstDelimiters += [label:"outlook", start:" outlook:", stop:" ", strip:1]
+		lstDelimiters += [label:"nodeID", start:" node:ID_", stop:" ", strip:6]
 // Start and end position of an attribute
 		int intStartPosition
 		int intStopPosition
@@ -224,14 +225,15 @@ Error message:<br><br>")
 		}
 // Parse the other attributes
 		lstDelimiters.each {
-// Add a space, so attributes at the end of the line will be parsed.
-			strName = strName + " "
+// Add a space before and after, so attributes at the beginning or the end of the line will
+// be parsed.
+			strName = " " + strName + " "
 // Determine start position of attribute
 			intStartPosition = strName.indexOf(it["start"])
 // If start position is found continue
 			if (intStartPosition > -1) {
 // Determine end position of attribute
-				intStopPosition = strName.indexOf(it["stop"], intStartPosition)
+				intStopPosition = strName.indexOf(it["stop"], intStartPosition + 1)
 				switch( it["label"]) {
 // Parsing of context
 					case "where":
@@ -249,7 +251,7 @@ Error message:<br><br>")
 						else {
 							strWho = strName.substring(intStartPosition + it["strip"],
 								intStopPosition)
-// For removing action owner from action name later 1 extra character has to be removed
+// For removing action owner from action name later the extra "]" character has to be removed
 							intStopPosition = intStopPosition + 1
 						}
 						break
@@ -306,11 +308,12 @@ Error message:<br><br>")
 				}
 // Remove the parsed attribute from the next action name.
 // Also the 'outlook:' key and invalid URLs are removed.
-				if (intStopPosition > intStartPosition) {
-					strName = stripAttr(strName, intStartPosition, intStopPosition)
+// User story 9: added + 1 to intStartPosition to prevent that no space is left after removal
+				if (intStopPosition > intStartPosition + 1) {
+					strName = stripAttr(strName, intStartPosition + 1, intStopPosition)
 				}
 			}
-// Remove the previously added trailing space from next action name
+// Remove the previously added leading and trailing spaces from next action name
 			strName = strName.trim()
 		}
 // Check for and handle exceptions for attribute strWhere, see function Support.strWhereFinal
@@ -368,6 +371,8 @@ Error message:<br><br>")
 			case ~/http:.*/:
 				break
 			case ~/https:.*/:
+				break
+			case ~/mailto:.*/:
 				break
 			case ~/outlook:.*/:
 				strLink = "outlook:"

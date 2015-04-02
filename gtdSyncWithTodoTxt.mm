@@ -1,7 +1,7 @@
 <map version="freeplane 1.3.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
-<node TEXT="GTD Sync with todo.txt" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1427757423590" BACKGROUND_COLOR="#97c7dc" LINK="http://members.casema.nl/henk.vanden.akker/">
+<node TEXT="GTD Sync with todo.txt" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1427841103898" BACKGROUND_COLOR="#97c7dc" LINK="http://members.casema.nl/henk.vanden.akker/">
 <font SIZE="16" BOLD="true" ITALIC="true"/>
 <hook NAME="MapStyle">
     <properties show_icon_for_attributes="true" show_note_icons="true"/>
@@ -56,12 +56,11 @@
 <hook NAME="AutomaticEdgeColor" COUNTER="3"/>
 <attribute_layout NAME_WIDTH="121" VALUE_WIDTH="126"/>
 <attribute NAME="name" VALUE="gtdSyncWithTodoTxt"/>
-<attribute NAME="version" VALUE="v0.7.3"/>
+<attribute NAME="version" VALUE="v0.7.4"/>
 <attribute NAME="author" VALUE="Henk van den Akker"/>
 <attribute NAME="freeplaneVersionFrom" VALUE="1.3.11"/>
 <attribute NAME="freeplaneVersionTo" VALUE=""/>
 <attribute NAME="updateUrl" VALUE=""/>
-<attribute NAME="gtdMindMapLanguage" VALUE="nl"/>
 <richcontent TYPE="NOTE">
 
 <html>
@@ -241,7 +240,6 @@
     </ul>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -266,7 +264,6 @@
     </ul>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -284,6 +281,27 @@
     <ul>
       <li>
         <a href="https://sourceforge.net/p/gtdsync/tickets/15/">Defect #15</a>: Error when accessing the Freeplane log file via the button on the GTD Sync results screen. Reported by Evereasy.
+      </li>
+    </ul>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="v0.7.4" ID="ID_1637586352" CREATED="1427841126191" MODIFIED="1427841136351">
+<node ID="ID_1280416691" CREATED="1427757344829" MODIFIED="1427841467759"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h5>
+      New functionality
+    </h5>
+    <ul>
+      <li>
+        <a href="https://sourceforge.net/p/gtdsync/tickets/9/">User story #9</a>: Possibility to add e-mail addresses to next actions.
       </li>
     </ul>
   </body>

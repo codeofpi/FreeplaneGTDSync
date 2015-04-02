@@ -8,6 +8,10 @@ Press Alt+F1 after installation.
 
 # Changes: #
 
+## V0.7.4: Bug fixes and minor changes ##
+
+*  [User story #9](https://sourceforge.net/p/gtdsync/tickets/9/): Possibility to add e-mail addresses to next actions
+
 ## V0.7.3: Bug fixes ##
 
 *  [Defect #15](https://sourceforge.net/p/gtdsync/tickets/15/): Error when accessing the Freeplane log file via the button on the GTD Sync results screen. Reported by Evereasy.
