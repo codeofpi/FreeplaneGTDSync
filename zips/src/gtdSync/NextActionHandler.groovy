@@ -14,6 +14,7 @@ class NextActionHandler {
 	static int intNextActionsNewWithWarning = 0
 	static int intNextActionsExisting = 0
 	static int intNextActionsExistingChanged = 0
+	static int intProjectsChanged = 0
 	static int intNextActionsExistingWithWarning = 0
 	static int intNextActionsExistingNotImported = 0
 // Attribute and other labels, translated
@@ -40,7 +41,11 @@ class NextActionHandler {
 	static String strExceptionExport
 	static String strNotImportedNotUpdatable
 	static String strNotUpdatableCreated
-	static String strNotUpdatableProject
+	static String strProjectUpdated
+	static String strProjectAddedRemoved
+	static String strProjectAbsent
+	static String strProjectOtherName
+	String strNotUpdatableProject = ""
 // Today's date
 	static Date dateToday = new Date()
 // Todo.txt line
@@ -60,6 +65,7 @@ class NextActionHandler {
 	Date dateWhen
 	String strWhen = ""
 	String strProject = ""
+	Proxy.Node nodeProject = null
 	URI uriLink = null
 	String strLink = ""
 	String strNodeID = ""
@@ -142,13 +148,20 @@ class NextActionHandler {
  other nodes. Please submit a defect at https://sourceforge.net/p/gtdsync/tickets/new/.<br><br>\
 Error message:<br><br>")
 		strNotImportedNotUpdatable = TextUtils.getText("gtdSyncNotImportedNotUpdatable",
-			"NOT IMPORTED: It is not possible to update the mind map foor the following changes:")
+			"NOT IMPORTED: It is not possible to update the mind map for the following changes:")
 		strNotUpdatableCreated = TextUtils.getText("gtdSyncNotUpdatableCreated",
 			"Cause: this date is never changed after the creation of a next action. Possibly this\
  has happened by accident.")
-		strNotUpdatableProject = TextUtils.getText("gtdSyncNotUpdatableProject",
-			"Cause: the new position of this next action in the mind map cannot be derived\
- automatically. Because of this you have to reposition this next action manually.")
+		strProjectUpdated = TextUtils.getText("gtdSyncProjectUpdated", "The name of project {0} has\
+ been changed to {1}. The name of the project is changed for all next actions under this project.")
+		strProjectAddedRemoved = TextUtils.getText("gtdSyncProjectAddedRemoved",
+			"Cause: the project is added to or removed from the next action. You can perform this\
+ action in your GTD mind map only yourself.")
+		strProjectAbsent = TextUtils.getText("gtdSyncProjectAbsent", "Cause: this next action has no\
+ project in the GTD mind map, so there is nothing to update.")
+		strProjectOtherName = TextUtils.getText("gtdSyncProjectOtherName",
+			"Cause: the name of this project has been changed to another name, {0}, by another next\
+ action in the todo.txt file or by a recent update in the GTD mind map.")
 		strUnknown = TextUtils.getText("gtdSyncUnknown", "Unknown")
 		strLinkOldDefault = "http://" + TextUtils.getText("gtdSyncLinkOldDefault", "www.unknown.com")
 	}
@@ -157,6 +170,8 @@ Error message:<br><br>")
 	NextActionHandler(String strTextLine) {
 		def lstDelimiters = []
 // Delimiters for parsing several attributes
+// User story 9: added space before start delimiter so that an e-mail address is not parsed
+// as context and added mailto; as a delimiter, see https://sourceforge.net/p/gtdsync/tickets/9/
 		lstDelimiters += [label:"where", start:" @", stop:" ", strip:2]
 		lstDelimiters += [label:"who", start:" [", stop:"] ", strip:2]
 		lstDelimiters += [label:"threshold", start:" t:", stop:" ", strip:3]
@@ -233,6 +248,7 @@ Error message:<br><br>")
 // If start position is found continue
 			if (intStartPosition > -1) {
 // Determine end position of attribute
+// User story 9: added + 1 because intStartPosition is now always a space
 				intStopPosition = strName.indexOf(it["stop"], intStartPosition + 1)
 				switch( it["label"]) {
 // Parsing of context
@@ -359,12 +375,11 @@ Error message:<br><br>")
 		}
 // Lookup if the next action is a descendant of a project and, if so, add the project name
 // to the todo.txt line
-		nodesProjects.each {
-			if ((it) && nodeCurrent.isDescendantOf(it)){
-				strProject = it.plainText.trim()
-			}
+		nodeProject = lookupProject(nodeCurrent, nodesProjects)
+		if (nodeProject) {
+			strProject = nodeProject.plainText.trim()
+			strTodoTxtLine += "+" + strProject + " "
 		}
-		if (strProject) { strTodoTxtLine += "+" + strProject + " " }
 // Check if there is a link and whether it is supported. If so, add it to the todo.txt line.
 		strLink = nodeCurrent.link.uri.toString().trim()
 		switch (strLink) {
@@ -372,6 +387,7 @@ Error message:<br><br>")
 				break
 			case ~/https:.*/:
 				break
+// User story 9: added mailto: as a supported type of URL 
 			case ~/mailto:.*/:
 				break
 			case ~/outlook:.*/:
@@ -445,7 +461,41 @@ Error message:<br><br>")
 		strProjectOld = strUnknown
 		if (uriLink) { uriLinkOld = strLinkOldDefault.toURI() }
 	}
-
+	
+// User story 6: This function handles the possible update of a project name
+// https://sourceforge.net/p/gtdsync/tickets/6/
+	void updateProject(Proxy.Node nodeFound, nodesProject) {
+		if ((strProject) && (strProjectOld)) {
+			nodeProject = lookupProject(nodeFound, nodesProject)
+			if (nodeProject) {
+// Criterion 2: update the name of the project node
+				if (nodeProject.plainText.trim() == strProjectOld) {
+					nodeProject.text = strProject
+					LogUtils.info(MessageFormat.format(strProjectUpdated,
+						Support.quote(strProjectOld), Support.quote(strProject)))
+					intProjectsChanged++
+// To prevent it is counted as a changed next action and included in listChangedAttributes()
+					strProjectChanged = ""
+				}
+// Criterion 7: project already updated with new project name, nothing is done
+				else if (nodeProject.plainText.trim() == strProject) { strProjectChanged = "" }
+// Criteria 8 and 9: project has been updated with an other project name
+				else {
+					strNotUpdatableProject = MessageFormat.format(strProjectOtherName, 
+						nodeProject.plainText.trim())
+				}
+			}
+// Criterion 4: next action does not have a project as parent
+			else {
+				strNotUpdatableProject = strProjectAbsent
+			}
+		}
+// Criterion 3: project is added or removed
+		else {
+			strNotUpdatableProject = strProjectAddedRemoved
+		}
+	}
+	
 // This functions lists all changes imported or not imported.
 	void listChangedAttributes() {
 		if (strNameChanged) {
@@ -562,29 +612,31 @@ Error message:<br><br>")
 	}
 
 // recursive walk through nodes to find Projects
-	static def findProjects(Proxy.Node nodeCurrent, String strIconProject){
+	static def findProjects(Proxy.Node nodeCurrent, String strIconProject, boolean blnRemoveSpaces){
 		def icon = nodeCurrent.icons.icons
 		def nodesProject = []
 	
 // include nodesProject if it has project icon and its not the icon setting node for projects
 		if (icon[0] == strIconProject){
 			if (!(nodeCurrent.text =~ strSettingPattern)){
-//				intNextActionsNew++
+// Check on spaces only during export
+				if (blnRemoveSpaces) {
 // If the project name contains spaces, the words will be capitalised and the spaces will be
 // removed.
-				if (nodeCurrent.text =~ /\s/) {
-					nodeCurrent.text = Support.removeWhitespace(nodeCurrent.text,
-						Support.strProjectLabel)
-					LogUtils.info("- " + Support.strExceptionMessage + "\n")
-					Support.strExceptionMessage = ""
-					intNextActionsNewWithWarning++
+					if (nodeCurrent.text =~ /\s/) {
+						nodeCurrent.text = Support.removeWhitespace(nodeCurrent.text,
+							Support.strProjectLabel)
+						LogUtils.info("- " + Support.strExceptionMessage + "\n")
+						Support.strExceptionMessage = ""
+						intProjectsChanged++
+					}
 				}
 				nodesProject = [nodeCurrent]
 			}
 		}
 	
 		nodeCurrent.children.each {
-			nodesProject += findProjects(it, strIconProject)
+			nodesProject += findProjects(it, strIconProject, blnRemoveSpaces)
 		}
 	
 		return nodesProject
@@ -636,6 +688,17 @@ Error message:<br><br>")
 			}
 		}
 		return nahsExport
+	}
+
+// Lookup whether the node is a descendent of a project and, if so, return the project node
+	static Proxy.Node lookupProject(Proxy.Node nodeCurrent, nodesProjects) {
+		Proxy.Node nodeProject = null
+		nodesProjects.each {
+			if ((it) && nodeCurrent.isDescendantOf(it)){
+				nodeProject = it
+			}
+		}
+		return nodeProject
 	}
 
 // Add exception messages for logging in freeplane file

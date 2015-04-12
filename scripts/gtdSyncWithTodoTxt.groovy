@@ -66,7 +66,11 @@ Proxy.Node nodeNew
 def nodesProject = [:]
 Proxy.Node nodeParent
 Proxy.Node nodeAction
-def nodesProjectExport =[]
+def nodesProjectImport = []
+def nodesProjectExport = []
+
+// Project looked up in mind map
+String strProjectInMap
 
 // Exported todo.txt lines
 String strTodoTxt = ""
@@ -105,6 +109,8 @@ String strNextActionsTodoTxtExisting = textUtils.getText(
 	'</li><li>{1} of {0} existing next actions have been changed')
 String strNextActionsTodoTxtExistingChanged = textUtils.getText(
 	'gtdSyncResultNextActionsTodoTxtExistingChanged',', of which:<ul style={0}>')
+String strProjectsTodoTxtChanged = textUtils.getText(
+	'gtdSyncResultProjectsTodoTxtChanged','<li>{0} changed projects</li>')
 String strNextActionsTodoTxtExistingWithWarning = textUtils.getText(
 	'gtdSyncResultNextActionsTodoTxtExistingWithWarning',
 	'<li>{0} next actions with remarks and/or corrections</li>')
@@ -141,7 +147,7 @@ String strLastSyncDateMissingTrue = textUtils.getText('gtdSyncResultLastSyncDate
  could not be determined whether next actions in the mind map have changed in the meantime. It\
  is assumed that all of them have changed and out of precaution potential updates from\
  todo.txt have been skipped. If so, it is indicated that the changed next action have\
- not been imported and there is a reference to the details in the logfile.</p>')
+ not been imported and there is a reference to the details in the log file.</p>')
 
 // Translations: Strings with information or warnings on the export to todo.txt
 String strNextActionsExported = textUtils.getText('gtdSyncResultNextActionsExported',
@@ -156,16 +162,16 @@ String strNextActionsExportedWithWarning = textUtils.getText(
 // Translations: String with information on logging
 String strLogNotImported = textUtils.getText('gtdSyncResultLogNotImported',
  '<br><p>Some existing next actions in the GTD mind map have not been updated with the changes\
- from todo.txt. You can review these changes in the Freeplane logfile and change the next\
- actions manually if necessary. The logfile may also contain information regarding correction on\
+ from todo.txt. You can review these changes in the Freeplane log file and change the next\
+ actions manually if necessary. The log file may also contain information regarding correction on\
  next actions.</p>')
 String strLogCorrections = textUtils.getText('gtdSyncResultLogCorrections',
-	'<br><p>For details on corrected next actions, see the Freeplane logfile.</p>')
+	'<br><p>For details on corrected next actions, see the Freeplane log file.</p>')
 String strNoLog = textUtils.getText('gtdSyncResultNoLog',
 	'<br><p>There are no skipped or corrected next actions.</p>')
 String strLogButtonText = textUtils.getText("gtdSyncResultLogButtonText",
-	"<HTML><CENTER>Consult the Freeplane logfile</CENTER></HTML>")
-// URI for Freeplane logfile
+	"<HTML><CENTER>Consult the Freeplane log file</CENTER></HTML>")
+// URI for Freeplane log file
 // Replaced '//' with File.separator in order to resolve defect 15
 // https://sourceforge.net/p/gtdsync/tickets/15/
 URI uriFreeplaneLog = new File(logger.logDirectory + File.separator + "log.0").toURI()
@@ -236,6 +242,8 @@ int intNextActionsTodoTxtNewWithWarning = 0
 int intNextActionsTodoTxtExisting = 0
 //  Number of existing next actions in todo.txt with warning
 int intNextActionsTodoTxtExistingChanged = 0
+//  Number of projects changed during import
+int intProjectsTodoTxtChanged = 0
 //  Number of existing next actions in todo.txt with warning
 int intNextActionsTodoTxtExistingWithWarning = 0
 //  Number of existing next actions in todo.txt not imported
@@ -243,7 +251,7 @@ int intNextActionsTodoTxtExistingNotImported = 0
 //  Number of next actions exported to todo.txt
 int intNextActionsExported = 0
 //  Number of projects corrected during export
-int intProjectCorrected = 0
+int intProjectsCorrected = 0
 //  Number of next actions exported to todo.txt with warning
 int intNextActionsExportedWithWarning = 0
 
@@ -290,6 +298,7 @@ if (nodeRoot['todoTxtPath'].toString()) {
 		NextActionHandler.intNextActionsNewWithWarning = 0
 		NextActionHandler.intNextActionsExisting = 0
 		NextActionHandler.intNextActionsExistingChanged = 0
+		NextActionHandler.intProjectsChanged = 0
 		NextActionHandler.intNextActionsExistingWithWarning = 0
 		NextActionHandler.intNextActionsExistingNotImported = 0
 //  Make a backup of the history snapshot file
@@ -325,6 +334,8 @@ else {
 fileTodoTxt = new File(strTodoDirectory + strTodoTxtFile)
 fileTodoTxtBackup = new File(strTodoDirectory + strTodoTxtBackup)
 if (fileTodoTxt.exists()) {
+// List all projects in the GTD mind map and do not remove spaces from project names
+nodesProjectImport = NextActionHandler.findProjects(nodeRoot, s.strIconProject, false)
 //  Read the todo.txt file as UTF-8
 	readerTodoTxt = new InputStreamReader(new FileInputStream(strTodoDirectory
 		+ strTodoTxtFile), 'UTF-8')
@@ -404,12 +415,12 @@ if (fileTodoTxt.exists()) {
 					if (nahNextAction.uriLink != nahNextAction.uriLinkOld) {
 						nahNextAction.strLinkChanged = "\n* " + nahNextAction.strLinkLabel + ":"
 					}
-// If there are any updatable changes start the update process
+// If there are any changes start the update process
 					if (nahNextAction.strNameChanged + nahNextAction.strPriorityChanged +
-						nahNextAction.strDoneChanged + nahNextAction.strWhereChanged +
-						nahNextAction.strWhoChanged + nahNextAction.strThresholdChanged +
-						nahNextAction.strWhenChanged + nahNextAction.strLinkChanged) {
-						nahNextAction.blnChanged = true
+						nahNextAction.strDoneChanged + nahNextAction.strCreatedChanged +
+						nahNextAction.strWhereChanged + nahNextAction.strWhoChanged +
+						nahNextAction.strThresholdChanged + nahNextAction.strWhenChanged +
+						nahNextAction.strProjectChanged + nahNextAction.strLinkChanged) {
 // Lookup corresponding node in GTD mind map
 						nodesFound = c.find{ it.nodeID == nahNextAction.strNodeID}
 // If not found, it is not possible to update
@@ -419,77 +430,88 @@ if (fileTodoTxt.exists()) {
 							nahNextAction.blnNotImported = true
 						}
 						else {
+// User story 9: update project, if possible
+							if (nahNextAction.strProjectChanged) {
+								nahNextAction.updateProject(nodesFound[0], nodesProjectImport)
+							}
+// Select all changed next actions
+							if (nahNextAction.strNameChanged + nahNextAction.strPriorityChanged +
+								nahNextAction.strDoneChanged + nahNextAction.strCreatedChanged +
+								nahNextAction.strWhereChanged + nahNextAction.strWhoChanged +
+								nahNextAction.strThresholdChanged + nahNextAction.strWhenChanged +
+								nahNextAction.strProjectChanged + nahNextAction.strLinkChanged) {
+								nahNextAction.blnChanged = true
 // If the node als has been changed since last update, do not update
-							if (nodesFound[0].lastModifiedAt > dateLastSync) {
-								nahNextAction.strMessage += "\n- " + strNotImportedNodeChanged
-								nahNextAction.listChangedAttributes()
-								nahNextAction.blnNotImported = true
-							}
-							else {
+								if (nodesFound[0].lastModifiedAt > dateLastSync) {
+									nahNextAction.strMessage += "\n- " + strNotImportedNodeChanged
+									nahNextAction.listChangedAttributes()
+									nahNextAction.blnNotImported = true
+								}
+								else {
 // List changes which are not updatable
-								if (nahNextAction.strCreatedChanged + nahNextAction.strProjectChanged) {
-									nahNextAction.notUpdatableChanges()
-								}
-								nahNextAction.strImportInfo += "\n- " + strImported
-								nahNextAction.listChangedAttributes()
+									if (nahNextAction.strCreatedChanged + nahNextAction.strProjectChanged) {
+										nahNextAction.notUpdatableChanges()
+									}
+// List changes that are updatable
+									if (nahNextAction.strNameChanged + nahNextAction.strPriorityChanged +
+										nahNextAction.strDoneChanged + nahNextAction.strWhereChanged +
+										nahNextAction.strWhoChanged + nahNextAction.strThresholdChanged +
+										nahNextAction.strWhenChanged + nahNextAction.strLinkChanged) {
+										nahNextAction.strImportInfo += "\n- " + strImported
+										nahNextAction.listChangedAttributes()
 // Update changes in mind map
-								if (nahNextAction.strNameChanged) {
-									nodesFound[0].text = nahNextAction.strName
-								}
-								if (nahNextAction.strPriorityChanged) {
-									if (nahNextAction.blnPriority) {
-										s.ReplaceIcons(nodesFound[0], s.strIconNextAction, 
-											s.strIconToday)
-									}
-									else {
-										s.ReplaceIcons(nodesFound[0], s.strIconNextAction)
-									}
-								}
-								if (nahNextAction.strDoneChanged) {
-									s.ReplaceIcons(nodesFound[0], s.strIconDone)
-									nodesFound[0][(s.strDoneLabel)] =
-									s.dateFormat.format(nahNextAction.dateDone) 
-								}
-								if (nahNextAction.strWhereChanged) {
-									nodesFound[0][(s.strWhereLabel)] = nahNextAction.strWhere
-								}
-								if (nahNextAction.strWhoChanged) {
-									nodesFound[0][(s.strWhoLabel)] = nahNextAction.strWho
-								}
-								if (nahNextAction.strThresholdChanged) {
-									if (nahNextAction.dateThreshold) {
-										nodesFound[0][(s.strThresholdLabel)] =
-										s.dateFormat.format(nahNextAction.dateThreshold)
-									}
-									else { nodesFound[0][(s.strThresholdLabel)] = "" }
-								}
-								if (nahNextAction.strWhenChanged) {
-									if (nahNextAction.dateWhen) {
-										nodesFound[0][(s.strWhenLabel)] =
-										s.dateFormat.format(nahNextAction.dateWhen)
-									}
-									else { nodesFound[0][(s.strWhenLabel)] = "" }
-								}
-								if (nahNextAction.strLinkChanged) {
-									nodesFound[0].link.uri = nahNextAction.uriLink
-								}
+										if (nahNextAction.strNameChanged) {
+											nodesFound[0].text = nahNextAction.strName
+										}
+										if (nahNextAction.strPriorityChanged) {
+											if (nahNextAction.blnPriority) {
+												s.ReplaceIcons(nodesFound[0], s.strIconNextAction, 
+													s.strIconToday)
+											}
+											else {
+												s.ReplaceIcons(nodesFound[0], s.strIconNextAction)
+											}
+										}
+										if (nahNextAction.strDoneChanged) {
+											s.ReplaceIcons(nodesFound[0], s.strIconDone)
+											nodesFound[0][(s.strDoneLabel)] =
+											s.dateFormat.format(nahNextAction.dateDone) 
+										}
+										if (nahNextAction.strWhereChanged) {
+											nodesFound[0][(s.strWhereLabel)] = nahNextAction.strWhere
+										}
+										if (nahNextAction.strWhoChanged) {
+											nodesFound[0][(s.strWhoLabel)] = nahNextAction.strWho
+										}
+										if (nahNextAction.strThresholdChanged) {
+											if (nahNextAction.dateThreshold) {
+												nodesFound[0][(s.strThresholdLabel)] =
+												s.dateFormat.format(nahNextAction.dateThreshold)
+											}
+											else { nodesFound[0][(s.strThresholdLabel)] = "" }
+										}
+										if (nahNextAction.strWhenChanged) {
+											if (nahNextAction.dateWhen) {
+												nodesFound[0][(s.strWhenLabel)] =
+												s.dateFormat.format(nahNextAction.dateWhen)
+											}
+											else { nodesFound[0][(s.strWhenLabel)] = "" }
+										}
+										if (nahNextAction.strLinkChanged) {
+											nodesFound[0].link.uri = nahNextAction.uriLink
+										}
 // Unfold branch up to changed node and add it to selection
-								nahNextAction.unfoldBranch(nodesFound[0])
-								nodesSelected += nodesFound[0]
+										nahNextAction.unfoldBranch(nodesFound[0])
+										nodesSelected += nodesFound[0]
+									}
+								}
+								nodesFound = []
 							}
-							nodesFound = []
-						}
-					}
-					else {
-// Message if there only changes that are not updatable
-						if (nahNextAction.strCreatedChanged + nahNextAction.strProjectChanged) {
-							nahNextAction.blnChanged = true
-							nahNextAction.notUpdatableChanges()
 						}
 					}
 				}
-// Process new next actions
 			}
+// Process new next actions
 			else {
 // Create "New" node if not present
 				nodeNew = nahNextAction.checkNode(nodeNew, nodeRoot, nahNextAction.strNewLabel, "")
@@ -531,6 +553,7 @@ if (fileTodoTxt.exists()) {
 	intNextActionsTodoTxtNewWithWarning = NextActionHandler.intNextActionsNewWithWarning
 	intNextActionsTodoTxtExisting = NextActionHandler.intNextActionsExisting
 	intNextActionsTodoTxtExistingChanged = NextActionHandler.intNextActionsExistingChanged
+	intProjectsTodoTxtChanged = NextActionHandler.intProjectsChanged
 	intNextActionsTodoTxtExistingWithWarning = NextActionHandler.intNextActionsExistingWithWarning
 	intNextActionsTodoTxtExistingNotImported = NextActionHandler.intNextActionsExistingNotImported
 	NextActionHandler.intNextActionsTotal = 0
@@ -538,6 +561,7 @@ if (fileTodoTxt.exists()) {
 	NextActionHandler.intNextActionsNewWithWarning = 0
 	NextActionHandler.intNextActionsExisting = 0
 	NextActionHandler.intNextActionsExistingChanged = 0
+	NextActionHandler.intProjectsChanged = 0
 	NextActionHandler.intNextActionsExistingWithWarning = 0
 	NextActionHandler.intNextActionsExistingNotImported = 0
 	
@@ -564,7 +588,7 @@ else {
 }
 
 // List all projects in the GTD mind map and remove spaces from project names
-nodesProjectExport = NextActionHandler.findProjects(nodeRoot, s.strIconProject)
+nodesProjectExport = NextActionHandler.findProjects(nodeRoot, s.strIconProject, true)
 
 // Find all next action nodes and turn them into NextActionHandler objects:
 nahsExport = NextActionHandler.findNextActions(nodeRoot, nodesProjectExport, s.strIconNextAction,
@@ -583,17 +607,17 @@ writerTodoTxt.each { it.write(strTodoTxt) }
 writerTodoTxt.each { it.close() }
 
 // Collect and reset the counters for export
-intProjectCorrected = NextActionHandler.intNextActionsNewWithWarning
 intNextActionsExported = NextActionHandler.intNextActionsExisting
+intProjectsCorrected = NextActionHandler.intProjectsChanged
 intNextActionsExportedWithWarning = NextActionHandler.intNextActionsExistingWithWarning
 NextActionHandler.intNextActionsTotal = 0
 NextActionHandler.intNextActionsNew = 0
 NextActionHandler.intNextActionsNewWithWarning = 0
 NextActionHandler.intNextActionsExisting = 0
 NextActionHandler.intNextActionsExistingChanged = 0
+NextActionHandler.intProjectsChanged = 0
 NextActionHandler.intNextActionsExistingWithWarning = 0
 NextActionHandler.intNextActionsExistingNotImported = 0
-
 
 // Change last sync date in root node
 nodeRoot['dateLastSync'] = new Date().time
@@ -642,6 +666,11 @@ else {
 // Display the number of existing next actions, total number and number changed.
 	strMessagePart += MessageFormat.format(strNextActionsTodoTxtExisting,
 		intNextActionsTodoTxtExisting, intNextActionsTodoTxtExistingChanged)
+// Display the number of changed projects in a nested list, if any
+	if (intProjectsTodoTxtChanged > 0) {
+		strMessageList = MessageFormat.format(strProjectsTodoTxtChanged,
+			intProjectsTodoTxtChanged)
+	}
 // Display the number of changed next actions with warnings in a nested list, if any
 	if (intNextActionsTodoTxtExistingWithWarning > 0) {
 		strMessageList = MessageFormat.format(strNextActionsTodoTxtExistingWithWarning,
@@ -669,9 +698,9 @@ strMessagePart = ""
 // Display number of next actions exported to todo.txt
 strMessage += MessageFormat.format(strNextActionsExported, intNextActionsExported)
 // Display the corrected projects, if any
-if (intProjectCorrected > 0) {
+if (intProjectsCorrected > 0) {
 	strMessageList = MessageFormat.format(strProjectsCorrected,
-		intProjectCorrected)
+		intProjectsCorrected)
 }
 // Display number of exported next actions with warnings, if any.
 if (intNextActionsExportedWithWarning > 0) {
@@ -695,8 +724,8 @@ if (intNextActionsTodoTxtExistingNotImported > 0) {
 // If there were any warnings, display information advising the user.
 else {
 	if (intNextActionsHistoryWithWarning + intNextActionsTodoTxtNewWithWarning +
-		intNextActionsTodoTxtExistingWithWarning + intNextActionsExportedWithWarning +
-		intProjectCorrected > 0) {
+		intProjectsTodoTxtChanged + intNextActionsTodoTxtExistingWithWarning +
+		intNextActionsExportedWithWarning + intProjectsCorrected > 0) {
 		strMessage += strLogCorrections
 	}
 // ... else let the user know there were not any irregularities.
@@ -710,8 +739,9 @@ strMessage += "</div></body></html>"
 container.add(new JLabel(strMessage))
 // If there are any irregularities in the log, display a button for viewing the log file
 if (intNextActionsHistoryWithWarning + intNextActionsTodoTxtNewWithWarning +
-	intNextActionsTodoTxtExistingWithWarning + intNextActionsTodoTxtExistingNotImported + 
-	intNextActionsExportedWithWarning + intProjectCorrected > 0) {
+	intProjectsTodoTxtChanged + intNextActionsTodoTxtExistingWithWarning +
+	intNextActionsTodoTxtExistingNotImported + intNextActionsExportedWithWarning +
+	intProjectsCorrected > 0) {
 // Set the button text
 	button.setText(strLogButtonText)
 	button.setHorizontalAlignment(SwingConstants.LEFT)

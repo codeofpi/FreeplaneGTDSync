@@ -289,7 +289,7 @@
 </node>
 </node>
 <node TEXT="v0.7.4" ID="ID_1637586352" CREATED="1427841126191" MODIFIED="1427841136351">
-<node ID="ID_1280416691" CREATED="1427757344829" MODIFIED="1427841467759"><richcontent TYPE="NODE">
+<node ID="ID_1280416691" CREATED="1427757344829" MODIFIED="1427979020737"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -297,16 +297,18 @@
   </head>
   <body>
     <h5>
-      New functionality
+      Enhancements
     </h5>
     <ul>
       <li>
         <a href="https://sourceforge.net/p/gtdsync/tickets/9/">User story #9</a>: Possibility to add e-mail addresses to next actions.
       </li>
+      <li>
+        <a href="https://sourceforge.net/p/gtdsync/tickets/6/">User story #6</a>: Automatically change project name from todo.txt file.
+      </li>
     </ul>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -395,7 +397,7 @@
   </body>
 </html>
 </richcontent>
-<node TEXT="nl" ID="ID_1844388934" CREATED="1390711563350" MODIFIED="1427580071757">
+<node TEXT="nl" ID="ID_1844388934" CREATED="1390711563350" MODIFIED="1428175681243">
 <attribute_layout NAME_WIDTH="242" VALUE_WIDTH="484"/>
 <attribute NAME="addons.${name}" VALUE="GTD Sync met todo.txt"/>
 <attribute NAME="addons.${name}.gtdSync" VALUE="GTD Sync"/>
@@ -462,7 +464,10 @@
 <attribute NAME="gtdSyncNotImportedNodeChanged" VALUE="NIET GE&#xcf;MPORTEERD: De corresponderende eerstvolgende actie in de mind map is ook gewijzigd sinds de vorige synchronisatie. Aan de hand van onderstaand overzicht kan je de eerstvolgende actie in de mind map handmatig wijzigen."/>
 <attribute NAME="gtdSyncNotImportedNotUpdatable" VALUE="NIET GE&#xcf;MPORTEERD: Het is niet mogelijk de mind map met de volgende wijzigingen bij te werken:"/>
 <attribute NAME="gtdSyncNotUpdatableCreated" VALUE="Reden: deze datum wordt na het opvoeren van een eerstvolgende actie nooit meer gewijzigd. Mogelijk is dit per ongeluk wel gebeurd."/>
-<attribute NAME="gtdSyncNotUpdatableProject" VALUE="Reden: er kan niet automatisch afgeleid worden wat de nieuwe positie van deze eerstvolgende actie in de GTD mind map moet zijn. Zet deze daarom handmatig op de juiste positie."/>
+<attribute NAME="gtdSyncProjectUpdated" VALUE="De naam van het project {0} is gewijzigd naar {1}. Dit geldt voor alle eerstvolgende acties onder dit project."/>
+<attribute NAME="gtdSyncProjectAddedRemoved" VALUE="Reden: het project is toegevoegd aan of verwijderd van de eerstvolgende actie. Je kunt deze actie in je GTD mind map alleen zelf uitvoeren."/>
+<attribute NAME="gtdSyncProjectAbsent" VALUE="Reden: deze eerstvolgende actie heeft geen project in de GTD mind map, dus er kan niets ge&#xfc;pdate worden."/>
+<attribute NAME="gtdSyncProjectOtherName" VALUE="Reden: de naam van dit project was al gewijzigd naar een andere naam, {0}, door een andere eerstvolgende actie in het todo.txt bestand of een recente updat in de GTD mind map."/>
 <attribute NAME="gtdSyncImported" VALUE="GE&#xcf;MPORTEERD:"/>
 <attribute NAME="gtdSyncWaitingFor" VALUE="Wachten-op"/>
 <attribute NAME="gtdSyncEmpty" VALUE="leeg"/>
@@ -483,6 +488,7 @@
 <attribute NAME="gtdSyncResultNextActionsTodoTxtNewWithWarning" VALUE=", waarvan:&lt;ul style={1}&gt;&lt;li&gt;{0} eerstvolgende acties met opmerkingen en/of correcties&lt;/li&gt;&lt;/ul&gt;"/>
 <attribute NAME="gtdSyncResultNextActionsTodoTxtExisting" VALUE="&lt;/li&gt;&lt;li&gt;{1} van {0} bestaande eerstvolgende acties zijn gewijzigd"/>
 <attribute NAME="gtdSyncResultNextActionsTodoTxtExistingChanged" VALUE=", waarvan:&lt;ul style={0}&gt;"/>
+<attribute NAME="gtdSyncResultProjectsTodoTxtChanged" VALUE="&lt;li&gt;{0} gewijzigde projecten&lt;/li&gt;"/>
 <attribute NAME="gtdSyncResultNextActionsTodoTxtExistingWithWarning" VALUE="&lt;li&gt;{0} eerstvolgende acties met opmerkingen en/of correcties&lt;/li&gt;"/>
 <attribute NAME="gtdSyncResultNextActionsTodoTxtExistingNotImported" VALUE="&lt;li&gt;{0} eerstvolgende acties niet ge&#xef;mporteerd zijn&lt;/li&gt;"/>
 <attribute NAME="gtdSyncResultNextActionsExported" VALUE="&lt;br&gt;&lt;p&gt;Er zijn {0} eerstvolgende acties ge&#xeb;xporteerd naar todo.txt"/>
@@ -494,8 +500,11 @@
 <attribute NAME="gtdSyncResultNoLog" VALUE="&lt;br&gt;&lt;p&gt;Er zijn geen overgeslagen of gecorrigeerde eerstvolgende acties.&lt;/p&gt;"/>
 <attribute NAME="gtdSyncResultLogButtonText" VALUE="&lt;HTML&gt;&lt;CENTER&gt;Raadpleeg het Freeplane logbestand&lt;/CENTER&gt;&lt;/HTML&gt;"/>
 <font BOLD="false"/>
+<node TEXT="Copy tab separated translation to clipboard" ID="ID_1353298446" CREATED="1428274071602" MODIFIED="1428305681821" LINK="menuitem:_$ExecuteScriptForSelectionAction$0">
+<attribute NAME="script1" VALUE="import org.freeplane.features.clipboard.ClipboardController&#xa;def clipboardController = ClipboardController.controller&#xa;def lstAttributes = node.parent.attributes.map&#xa;String strTabSeparated = &quot;&quot;&#xa;lstAttributes.each { k, v -&gt; strTabSeparated += &quot;${k}\t${v}\n&quot; }&#xa;clipboardController.setClipboardContents(strTabSeparated)&#xa;"/>
 </node>
-<node TEXT="en" ID="ID_1505941754" CREATED="1390267005931" MODIFIED="1427577648708">
+</node>
+<node TEXT="en" ID="ID_1505941754" CREATED="1390267005931" MODIFIED="1428440585401">
 <attribute_layout NAME_WIDTH="242" VALUE_WIDTH="484"/>
 <attribute NAME="addons.${name}" VALUE="GTD Sync with todo.txt"/>
 <attribute NAME="addons.${name}.gtdSync" VALUE="GTD Sync"/>
@@ -560,9 +569,12 @@
 <attribute NAME="gtdSyncNotImportedFirstSync" VALUE="NOT IMPORTED: This todo.txt line contains a node ID, like it has been exported from the GTD mind map during a previous synchronisation. However, this is not possible since this is the first synchronisation."/>
 <attribute NAME="gtdSyncNotImportedNodeMissing" VALUE="NOT IMPORTED: This existing next action could not be found in the GTD mind map and because of that it was not possible to apply the following changes:"/>
 <attribute NAME="gtdSyncNotImportedNodeChanged" VALUE="NOT IMPORTED: The corresponding next action in the mind map has also been changed since last synchronisation. Based on the overview below you can change the next action in the mind map manually."/>
-<attribute NAME="gtdSyncNotImportedNotUpdatable" VALUE="NOT IMPORTED: It is not possible to update the mind map foor the following changes:"/>
+<attribute NAME="gtdSyncNotImportedNotUpdatable" VALUE="NOT IMPORTED: It is not possible to update the mind map for the following changes:"/>
 <attribute NAME="gtdSyncNotUpdatableCreated" VALUE="Cause: this date is never changed after the creation of a next action. Possibly this has happened by accident."/>
-<attribute NAME="gtdSyncNotUpdatableProject" VALUE="Cause: the new position of this next action in the mind map cannot be derived automatically. Because of this you have to reposition this next action manually."/>
+<attribute NAME="gtdSyncProjectUpdated" VALUE="The name of project {0} has been changed to {1}. The name of the project is changed for all next actions under this project."/>
+<attribute NAME="gtdSyncProjectAddedRemoved" VALUE="Cause: the project is added to or removed from the next action. You can perform this action in your GTD mind map only yourself."/>
+<attribute NAME="gtdSyncProjectAbsent" VALUE="Cause: this next action has no project in the GTD mind map, so there is nothing to update."/>
+<attribute NAME="gtdSyncProjectOtherName" VALUE="Cause: the name of this project has been changed to another name, {0}, by another next action in the todo.txt file or by a recent update in the GTD mind map."/>
 <attribute NAME="gtdSyncImported" VALUE="IMPORTED:"/>
 <attribute NAME="gtdSyncWaitingFor" VALUE="Waiting-for"/>
 <attribute NAME="gtdSyncEmpty" VALUE="empty"/>
@@ -576,23 +588,27 @@
 <attribute NAME="gtdSyncResultTodoTxtHistoryMissing" VALUE="&lt;br&gt;&lt;p&gt;&lt;b&gt;Warning:&lt;/b&gt; the snapshot of the exported next actions during last synchronisation is missing. To prevent loss of potential changes it has been assumed that all existing next actions in todo.txt have changed since last synchronisation.&lt;/p&gt;"/>
 <attribute NAME="gtdSyncResultTodoTxtHistoryWarnings" VALUE="&lt;p&gt;&lt;b&gt;Warning:&lt;/b&gt; there were {0} remarks and/or corrections reading the next actions exported last synchronisation. This could be caused by manually changing the file {1}. This file should not be changed.&lt;/p&gt;"/>
 <attribute NAME="gtdSyncResultDifferentCounts" VALUE="&lt;p&gt;&lt;b&gt;Warning:&lt;/b&gt; the number of exported next actions in last synchronisation, {0}, differs from the number of existing actions in todo.txt, {1}. Possibly next actions or node id were removed by accident.&lt;/p&gt;"/>
-<attribute NAME="gtdSyncResultLastSyncDateMissing" VALUE="&lt;p&gt;&lt;b&gt;Warning:&lt;/b&gt; the date of the last synchronisation was missing. Because of this it could not be determined whether next actions in the mind map have changed in the meantime. It is assumed that all of them have changed and out of precaution potential updates from todo.txt have been skipped. If so, it is indicated that the changed next action have not been imported and there is a reference to the details in the logfile.&lt;/p&gt;"/>
+<attribute NAME="gtdSyncResultLastSyncDateMissing" VALUE="&lt;p&gt;&lt;b&gt;Warning:&lt;/b&gt; the date of the last synchronisation was missing. Because of this it could not be determined whether next actions in the mind map have changed in the meantime. It is assumed that all of them have changed and out of precaution potential updates from todo.txt have been skipped. If so, it is indicated that the changed next action have not been imported and there is a reference to the details in the log file.&lt;/p&gt;"/>
 <attribute NAME="gtdSyncResultTodoTxtMissing" VALUE="&lt;p&gt;&lt;b&gt;Warning:&lt;/b&gt; there was no todo.txt present. It was expected to be present since this is not the first synchronisation. If there were any new or changed actions, they have been lost with the todo.txt file.&lt;/p&gt;"/>
 <attribute NAME="gtdSyncResultTodoTxtMissingFirstSync" VALUE="&lt;p&gt;There was no todo.txt present and thus no next actions have been imported.&lt;/p&gt;&lt;br&gt;"/>
-<attribute NAME="gtdSyncResultNextActionsTodoTxt" VALUE="&lt;p&gt;A total of {0} next actions from todo.txt have been processed of which:&lt;p&gt;&lt;ul style={2}&gt;&lt;li&gt;{1} new next actions"/>
+<attribute NAME="gtdSyncResultNextActionsTodoTxt" VALUE="&lt;p&gt;A total of {0} next actions from todo.txt have been processed of which:&lt;/p&gt;&lt;ul style={2}&gt;&lt;li&gt;{1} new next actions"/>
 <attribute NAME="gtdSyncResultNextActionsTodoTxtNewWithWarning" VALUE=", of which:&lt;ul style={1}&gt;&lt;li&gt;{0} next actions with remarks and/or corrections&lt;/li&gt;&lt;/ul&gt;"/>
 <attribute NAME="gtdSyncResultNextActionsTodoTxtExisting" VALUE="&lt;/li&gt;&lt;li&gt;{1} of {0} existing next actions have been changed"/>
 <attribute NAME="gtdSyncResultNextActionsTodoTxtExistingChanged" VALUE=", of which:&lt;ul style={0}&gt;"/>
+<attribute NAME="gtdSyncResultProjectsTodoTxtChanged" VALUE="&lt;li&gt;{0} changed projects&lt;/li&gt;"/>
 <attribute NAME="gtdSyncResultNextActionsTodoTxtExistingWithWarning" VALUE="&lt;li&gt;{0} next actions with remarks and/or corrections&lt;/li&gt;"/>
 <attribute NAME="gtdSyncResultNextActionsTodoTxtExistingNotImported" VALUE="&lt;li&gt;{0} next actions have not been imported&lt;/li&gt;"/>
 <attribute NAME="gtdSyncResultNextActionsExported" VALUE="&lt;br&gt;&lt;p&gt;{0} next actions were exported to todo.txt"/>
 <attribute NAME="gtdSyncResultNextActionsExportedList" VALUE=", with:&lt;ul style={0}&gt;"/>
 <attribute NAME="gtdSyncResultProjectsCorrected" VALUE="&lt;li&gt;{0} corrected projects&lt;/li&gt;"/>
 <attribute NAME="gtdSyncResultNextActionsExportedWithWarning" VALUE="&lt;li&gt;{0} corrected next actions&lt;/li&gt;"/>
-<attribute NAME="gtdSyncResultLogNotImported" VALUE="&lt;br&gt;&lt;p&gt;Some existing next actions in the GTD mind map have not been updated with the changes from todo.txt. You can review these changes in the Freeplane logfile and change the next actions manually if necessary. The logfile may also contain information regarding correction on next actions.&lt;/p&gt;"/>
-<attribute NAME="gtdSyncResultLogCorrections" VALUE="&lt;br&gt;&lt;p&gt;For details on corrected next actions, see the Freeplane logfile.&lt;/p&gt;"/>
+<attribute NAME="gtdSyncResultLogNotImported" VALUE="&lt;br&gt;&lt;p&gt;Some existing next actions in the GTD mind map have not been updated with the changes from todo.txt. You can review these changes in the Freeplane log file and change the next actions manually if necessary. The log file may also contain information regarding correction on next actions.&lt;/p&gt;"/>
+<attribute NAME="gtdSyncResultLogCorrections" VALUE="&lt;br&gt;&lt;p&gt;For details on corrected next actions, see the Freeplane log file.&lt;/p&gt;"/>
 <attribute NAME="gtdSyncResultNoLog" VALUE="&lt;br&gt;&lt;p&gt;There are no skipped or corrected next actions.&lt;/p&gt;"/>
-<attribute NAME="gtdSyncResultLogButtonText" VALUE="&lt;HTML&gt;&lt;CENTER&gt;Consult the Freeplane logfile&lt;/CENTER&gt;&lt;/HTML&gt;"/>
+<attribute NAME="gtdSyncResultLogButtonText" VALUE="&lt;HTML&gt;&lt;CENTER&gt;Consult the Freeplane log file&lt;/CENTER&gt;&lt;/HTML&gt;"/>
+<node TEXT="Copy tab separated translation to clipboard" ID="ID_1010554082" CREATED="1428274071602" MODIFIED="1428305681821" LINK="menuitem:_$ExecuteScriptForSelectionAction$0">
+<attribute NAME="script1" VALUE="import org.freeplane.features.clipboard.ClipboardController&#xa;def clipboardController = ClipboardController.controller&#xa;def lstAttributes = node.parent.attributes.map&#xa;String strTabSeparated = &quot;&quot;&#xa;lstAttributes.each { k, v -&gt; strTabSeparated += &quot;${k}\t${v}\n&quot; }&#xa;clipboardController.setClipboardContents(strTabSeparated)&#xa;"/>
+</node>
 </node>
 </node>
 <node TEXT="scripts" POSITION="right" ID="ID_1619523350" CREATED="1390267005954" MODIFIED="1427567423985">

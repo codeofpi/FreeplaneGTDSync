@@ -8,9 +8,10 @@ Press Alt+F1 after installation.
 
 # Changes: #
 
-## V0.7.4: Bug fixes and minor changes ##
+## V0.7.4: Enhancements ##
 
 *  [User story #9](https://sourceforge.net/p/gtdsync/tickets/9/): Possibility to add e-mail addresses to next actions
+*  [User story #6](https://sourceforge.net/p/gtdsync/tickets/6/): Automatically change project name from todo.txt file
 
 ## V0.7.3: Bug fixes ##
 
